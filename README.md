@@ -3,17 +3,25 @@
 
 <br>
 
+
+
 <p style="font-weight:bold">Functions</p>
 
- - `logger.info(path, data)` Logs to the console just like console.log but also has a time stamp.
+ - `logger.info(path, data)` Logs to the console just like console.log but will also have a time stamp and it will also log to the log file.
 
-  - `logger.pass(path, data)` Logs a message to the console with a time stamp, succsessful-tag and in the color green.
+  - `logger.pass(path, data)` Logs a message to the console console and the log file with a time stamp, succsessful-tag and in the color green.
 
-  - `logger.warning(path, data)` Logs a message to the console with a time stamp, warning-tag and in the color yellow.
+  - `logger.warning(path, data)` Logs a message to the console and the log file with a time stamp, warning-tag and in the color yellow.
 
   - `logger.error(path, data)` Logs a message to the console with a time stamp, error-tag and in the color red
   
-  - `logger.clean(path)` Clears the log file so that there is no content from the precious log.  
+  - `custom(path, tag-name, data)` Logs a message to the console with a time stamp, custom-tag and in white  
+
+
+  - `logger.clean(path)` Clears the log file.  
+
+
+
 
 <br>
 <h1 align="center">Example</h1>
@@ -26,29 +34,37 @@ const logger = require("./logger");
 //Define the log path 
 const path = './log.txt';
 
+
 //Removes all content from the log file
+//You shoud run this at the start of your file so that the previous log is cleared 
 logger.clean(path)
 
 
 
-//Logs  --> "[16:49:7] Default Test" in grey
+//Logs  -->  [13:41:24] Default Test in white
 logger.info(path, 'Default Test')
 
 
 
-//logs -->  "[16:49:7][successful] Pass Test" in green
+//logs -->  [13:41:24][successful] Pass Test in green
 logger.pass(path, 'Pass Test')
 
 
 
-//logs --> " [16:49:7][Warning] Warning Test" in yellow
+//Logs -->  [13:41:24][Warning] Warning Test in yellow
 logger.warning(path,'Warning Test ')
 
 
 
-//logs --> " [16:49:7][Error] Error Test" in red
+
+//logs -->  [13:41:24][Error] Error Test in red
 logger.error(path,'Error Test')
+
+
+
+//Logs -->  [13:41:24][Custom] Custom Test in white
+logger.custom(path, 'Custom', 'Custom Test')
 ```
 
 <hr>
-<p>Made with ❤️ by: mini51</p>
+<p>Made with ❤️ by: mini51</p> 

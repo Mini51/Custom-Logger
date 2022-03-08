@@ -4,6 +4,7 @@ const fs = require('fs')
 //* define style for each type of log
 const colors = {
 
+    default: "\x1b[1m",
     Pass: "\x1b[32m", 
     Warn: "\x1b[33m", 
     Error: "\x1b[31m",
@@ -31,7 +32,7 @@ module.exports = {
 
         formated = `[${hrs}:${min}:${sec}] ${data}`
 
-        console.log(formated)
+        console.log(colors.default, formated, colors.Reset)
         fs.appendFile(path,formated + '\n', () => { 
 
         })
@@ -67,7 +68,17 @@ module.exports = {
 
         })
 
-    }, 
+    },
+    
+    custom: function(path, tag, data) { 
+        formated = `[${hrs}:${min}:${sec}][${tag}] ${data}`
+        
+        console.log(colors.default, formated, colors.Reset); 
+        fs.appendFile(path,formated, () => { 
+            
+            
+        })
+    },
     
     //* Clears log file 
     clean: function(path) {

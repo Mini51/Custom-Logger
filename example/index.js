@@ -27,3 +27,6 @@ logger.warning(path,'Warning Test ')
 
 //logs --> " [16:49:7][Error] Error Test" in red
 logger.error(path,'Error Test')
+
+
+logger.custom(path, 'Custom', 'Custom Test')
