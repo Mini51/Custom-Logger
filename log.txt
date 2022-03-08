@@ -1,4 +1,0 @@
-[16:49:7][Warning] Warning Test 
-[16:49:7][successful] Pass Test
-[16:49:7][Error] Error Test
-[16:49:7] Default Test
