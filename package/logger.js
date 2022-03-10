@@ -15,11 +15,22 @@ const colors = {
 //* Get current time and then seperates it into hrs min sec
 const day = new Date()
 const hrs = day.getHours();
-const min = day.getMinutes();
-const sec = day.getSeconds();
+let min = day.getMinutes();
+let sec = day.getSeconds();
+min = fixTime(min);
+sec = fixTime(sec);
 
 
-//* Setting up var
+//* Fixes time so it is "01" not "1"
+function fixTime(i){
+    if(i < 10){
+        i = "0" + i
+    } 
+    return i;
+} 
+
+
+//* Setting up formated 
 var formated;
 
 
@@ -27,7 +38,7 @@ module.exports = {
     
 
 
-    //* when called will log normal messages to the console and debuf file    
+    //* when called will log normal messages to the console and debug file    
     info: function(path, data) {
 
         formated = `[${hrs}:${min}:${sec}] ${data}`
