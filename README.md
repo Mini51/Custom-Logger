@@ -7,17 +7,17 @@
 
 <p style="font-weight:bold">Functions</p>
 
-- `logger.info(path, data)` Logs to the console just like console.log but will also have a timestamp and it will also log to the log file.
+- `info(path, data)` Logs to the console just like console.log but will also have a timestamp and it will also log to the log file.
 
-- `logger.pass(path, data)` Logs a message to the console and the log file with a timestamp, successful-tag, and in the color green.
+- `pass(path, data)` Logs a message to the console and the log file with a timestamp, successful-tag, and in the color green.
 
-- `logger.warning(path, data)` Logs a message to the console and the log file with a timestamp, warning-tag, and in the color yellow.
+- `warning(path, data)` Logs a message to the console and the log file with a timestamp, warning-tag, and in the color yellow.
 
-- `logger.error(path, data)` Logs a message to the console with a timestamp, error-tag, and in the color red
+- `error(path, data)` Logs a message to the console with a timestamp, error-tag, and in the color red
 
 - `custom(path, tag-name, data)` Logs a message to the console with a timestamp, custom-tag, and in white
 
-- `logger.clean(path)` Clears the log file.
+- `clean(path)` Clears the log file.
   
 
 
