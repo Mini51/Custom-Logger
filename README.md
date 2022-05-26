@@ -1,70 +1,29 @@
-<h1 align='center'>Custom-logger</h1>
-<p align="center">A custom NodeJS logging system</p>
+# better logger 
+A simple logger for js that logs to the console and to a file. 
 
-<br>
-
-
-
-<p style="font-weight:bold">Functions</p>
-
-- `info(path, data)` Logs to the console just like console.log but will also have a timestamp and it will also log to the log file.
-
-- `pass(path, data)` Logs a message to the console and the log file with a timestamp, successful-tag, and in the color green.
-
-- `warning(path, data)` Logs a message to the console and the log file with a timestamp, warning-tag, and in the color yellow.
-
-- `error(path, data)` Logs a message to the console with a timestamp, error-tag, and in the color red
-
-- `custom(path, tag-name, data)` Logs a message to the console with a timestamp, custom-tag, and in white
-
-- `clean(path)` Clears the log file.
-  
-
-
-
-
-<br>
-<h1 align="center">Example</h1>
-
+setup the logger: 
 ```js
-// Import the logger 
-const logger = require("./logger");
+const log = require('../modules/logger');
+const path = require('path'); 
 
- 
-//Define the log path 
-const path = './log.txt';
-
-
-//Removes all content from the log file
-//You shoud run this at the start of your file so that the previous log is cleared 
-logger.clean(path)
-
-
-
-//Logs  -->  [13:41:24] Default Test in white
-logger.info(path, 'Default Test')
-
-
-
-//logs -->  [13:41:24][successful] Pass Test in green
-logger.pass(path, 'Pass Test')
-
-
-
-//Logs -->  [13:41:24][Warning] Warning Test in yellow
-logger.warning(path,'Warning Test ')
-
-
-
-
-//logs -->  [13:41:24][Error] Error Test in red
-logger.error(path,'Error Test')
-
-
-
-//Logs -->  [13:41:24][Custom] Custom Test in white
-logger.custom(path, 'Custom', 'Custom Test')
+const logger = new log({
+    // the .. is to go to go out of the modules folder and go to the parent folder
+    // if you would like to make it better please make a PR to the repo
+    path: path.join(__dirname, '../src/logs/log.txt'), 
+    timestamp: true, 
+});
 ```
 
-<hr>
-<p>Made with ❤️ by: mini51</p> 
+how to use it: 
+```js
+logger.info('This is an info message'); // [19:43:32][info] This is an info message
+logger.success('This is a success message'); // [19:43:32][success] This is a success message
+logger.error('This is an error message'); // [19:43:32][error] This is an error message
+logger.warning('This is a warning message'); // [19:43:32][warning] This is a warning message
+```
+
+# logger options 
+`path`: the path to the log file relative to the logger file. If you would like to make it better please make a PR to the repo
+
+`timestamp`: if you would like to add a timestamp to the log message
+

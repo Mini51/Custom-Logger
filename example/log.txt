@@ -1,0 +1,4 @@
+[19:59:47][info] This is an info message
+[19:59:47][error] This is an error message
+[19:59:47][success] This is a success message
+[19:59:47][warning] This is a warning message
