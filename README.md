@@ -3,15 +3,21 @@ A simple logger for js that logs to the console and to a file.
 
 setup the logger: 
 ```js
-const log = require('../modules/logger');
+const log = require('../src/logger');
 const path = require('path'); 
 
 const logger = new log({
-    // the .. is to go to go out of the modules folder and go to the parent folder
-    // if you would like to make it better please make a PR to the repo
-    path: path.join(__dirname, '../src/logs/log.txt'), 
-    timestamp: true, 
+    // the relative path to the log file 
+    path: './example/log.txt',
+    // enable timestamp in the log
+    timestamp: true,
 });
+
+
+logger.info('This is an info message');
+logger.success('This is a success message');
+logger.warning('This is a warning message');
+logger.error('This is an error message');
 ```
 
 how to use it: 
