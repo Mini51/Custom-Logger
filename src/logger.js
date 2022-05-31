@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path'); 
-
+const process = require('process'); 
 
 class logger {
     constructor(options) {
@@ -8,14 +8,13 @@ class logger {
         this.timestamp = options.timestamp || false;
     }
 
-
     info(message) { 
         if(this.timestamp) { 
             message =  `[${getTime()}][info] ${message}`;
         }
         
         console.log(message); 
-        fs.appendFileSync(this.path, message + '\n', (err) => { 
+        fs.appendFileSync(path.join(process.cwd(), this.path), message + '\n', (err) => { 
             if(err) {
                 console.log(err);
             }
@@ -31,7 +30,7 @@ class logger {
         }
         // log the message to the file and console
         console.log(message);
-        fs.appendFile(this.path, message + '\n', (err) => {
+        fs.appendFile(path.join(process.cwd(), this.path), message + '\n', (err) => {
             if (err) console.log(err);
         });
     }
@@ -46,7 +45,7 @@ class logger {
         
         // log the message to the file and console 
         console.log(message);
-        fs.appendFile(this.path, message + '\n', (err) => {
+        fs.appendFile(path.join(process.cwd(), this.path), message + '\n', (err) => {
             if (err) console.log(err);
         });
     }
@@ -60,14 +59,12 @@ class logger {
         }
         // log the message to the file and console 
         console.log(message);
-        fs.appendFile(this.path, message + '\n', (err) => {
+        fs.appendFile(path.join(process.cwd(), this.path), message + '\n', (err) => {
             if (err) console.log(err);
         });
     }
 
 }
-
-
 
 
 // functions for the timestamp in the log 
