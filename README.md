@@ -1,35 +1,52 @@
-# better logger 
-A simple logger for js that logs to the console and to a file. 
+# This is my custom logger that I use for my projects.
 
-setup the logger: 
-```js
-const log = require('../src/logger');
-const path = require('path'); 
 
-const logger = new log({
-    // the relative path to the log file 
-    path: './example/log.txt',
-    // enable timestamp in the log
-    timestamp: true,
+## How to setup 
+
+1. install dependencys
+```bash
+$ npm i 
+```
+
+2. build
+```bash 
+$ tsc 
+```
+
+
+## How to use
+
+```js 
+//require logger 
+const { Logger } = require('./build/index');
+
+//create the logger instances for the levels
+const debug = new Logger({ 
+    // path to the log file relative to CWD
+    path: './log.txt',
+    // the log level
+    level: 'debug',
+    // enables the timestamp on the logger (off by default)
+    timestamp: true
 });
 
 
-logger.info('This is an info message');
-logger.success('This is a success message');
-logger.warning('This is a warning message');
-logger.error('This is an error message');
+
+// use .log() to log the message
+debug.log('This is a debug message');
 ```
 
-how to use it: 
-```js
-logger.info('This is an info message'); // [19:43:32][info] This is an info message
-logger.success('This is a success message'); // [19:43:32][success] This is a success message
-logger.error('This is an error message'); // [19:43:32][error] This is an error message
-logger.warning('This is a warning message'); // [19:43:32][warning] This is a warning message
+output: 
+```
+console: [2022-06-07 23:26:13] debug: This is a debug message
+
+
+log file: [2022-06-07 23:26:13] debug: This is a debug message
 ```
 
-# logger options 
-`path`: the path to the log file relative to the logger file. If you would like to make it better please make a PR to the repo
+When creating the instance you can pass in 3 options 
 
-`timestamp`: if you would like to add a timestamp to the log message
+- `path` This option is to set the path to the log file. This is relative to CWD
+- `level` This is the log level it will deisplay in the log message 
+- `timestamp` This is a boolean option to enable the timestamp
 
